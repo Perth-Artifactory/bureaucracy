@@ -1,5 +1,6 @@
 \documentclass[11pt]{article}
 \usepackage{paper_style}
+% \usepackage{changes}
 
 %% ===============================================
 %% Setting the line spacing (3 options: only pick one)
@@ -10,14 +11,15 @@
 
 \setlength{\droptitle}{-5em} %% Don't touch
 
+\usepackage{bookmark}
+\bookmarksetup{numbered}
+
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % SET THE TITLE
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % TITLE:
-\title{Constitution of Perth Artifactory Inc
-\thanks{A draft/WIP}
-}
+\title{Constitution of Perth Artifactory Inc}
 
 % DATE:
 \date{\today}
@@ -33,21 +35,21 @@
 {\setstretch{.8}
 \maketitle
 % %%%%%%%%%%%%%%%%%%
-\begin{abstract}
-% CONTENT OF ABS HERE--------------------------------------
-
-This is a test document.
-
-% END CONTENT ABS------------------------------------------
-\noindent
-\textit{\textbf{Keywords: }%
-key1; key2; key3; key4.} \\ %% <-- Keywords HERE!
-\noindent
-\textit{\textbf{JEL Classification: }%
-Q12; C22; D81.} %% <-- JEL code HERE!
-
-\end{abstract}
-}
+% \begin{abstract}
+% % CONTENT OF ABS HERE--------------------------------------
+% 
+% This is a test document.
+% 
+% % END CONTENT ABS------------------------------------------
+% \noindent
+% \textit{\textbf{Keywords: }%
+% key1; key2; key3; key4.} \\ %% <-- Keywords HERE!
+% \noindent
+% \textit{\textbf{JEL Classification: }%
+% Q12; C22; D81.} %% <-- JEL code HERE!
+% 
+% \end{abstract}
+% }
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -55,6 +57,7 @@ Q12; C22; D81.} %% <-- JEL code HERE!
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\input{sections/definitions.tex}
+% \input{sections/definitions.tex}
+\input{converted.tex}
 
 \end{document}
