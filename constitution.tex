@@ -1,38 +1,45 @@
 \documentclass[11pt]{article}
-\usepackage{paper_style}
+% \usepackage{paper_style}
 % \usepackage{changes}
+\usepackage{bookmark}
+\usepackage{subfiles}
+\usepackage[explicit]{titlesec}
+\usepackage[x11names]{xcolor}
+\usepackage{enumitem}
+\usepackage{remreset}
 
 %% ===============================================
 %% Setting the line spacing (3 options: only pick one)
 % \doublespacing
 % \singlespacing
-\onehalfspacing
+% \onehalfspacing
 %% ===============================================
 
-\setlength{\droptitle}{-5em} %% Don't touch
+% \titleformat{\section}[hang]{\sffamily\color{IndianRed3}\bfseries\scshape\filleft\lsstyle}{}{2em}{#1\quad\rule[-0.25cm]{1.5pt}{1cm}\rlap{\qquad\Huge \thesection}}%
+% \titleformat{\section}[hang]{\sffamily\color{IndianRed3}\bfseries\scshape\filleft\lsstyle}{}{2em}{#1\quad\rule[-0.25cm]{1.5pt}{1cm}\rlap{\qquad\Large \thesection}}%
+% \setcounter{section}{3}
 
-\usepackage{bookmark}
+
+% \setlength{\droptitle}{-5em} %% Don't touch
+
 \bookmarksetup{numbered}
 
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% SET THE TITLE
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\makeatletter
+\@removefromreset{subsection}{section}
+\renewcommand\thesubsection{\arabic{subsection}}
+\makeatother
 
-% TITLE:
+
 \title{Constitution of Perth Artifactory Inc}
+\author{}
 
 % DATE:
 \date{\today}
 
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \begin{document}
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% ABSTRACT
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-{\setstretch{.8}
+
+% {\setstretch{.8}
 \maketitle
 % %%%%%%%%%%%%%%%%%%
 % \begin{abstract}
@@ -51,13 +58,15 @@
 % \end{abstract}
 % }
 
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% BODY OF THE DOCUMENT
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \section{Test Part}
+
+% \section{Test Division}
+
+\tableofcontents
+
+\pagebreak
 
 % \input{sections/definitions.tex}
-\input{converted.tex}
+\subfile{converted.tex}
 
 \end{document}
