@@ -4,9 +4,14 @@
 \usepackage{bookmark}
 \usepackage{subfiles}
 \usepackage[explicit]{titlesec}
+\usepackage{tocloft}
 \usepackage[x11names]{xcolor}
 \usepackage{enumitem}
-\usepackage{remreset}
+
+% \usepackage{remreset}
+
+%% include the below package if Latex kernal is from before 2018s
+% \usepackage{chngcntr}
 
 %% ===============================================
 %% Setting the line spacing (3 options: only pick one)
@@ -15,21 +20,70 @@
 % \onehalfspacing
 %% ===============================================
 
-% \titleformat{\section}[hang]{\sffamily\color{IndianRed3}\bfseries\scshape\filleft\lsstyle}{}{2em}{#1\quad\rule[-0.25cm]{1.5pt}{1cm}\rlap{\qquad\Huge \thesection}}%
-% \titleformat{\section}[hang]{\sffamily\color{IndianRed3}\bfseries\scshape\filleft\lsstyle}{}{2em}{#1\quad\rule[-0.25cm]{1.5pt}{1cm}\rlap{\qquad\Large \thesection}}%
 % \setcounter{section}{3}
-
 
 % \setlength{\droptitle}{-5em} %% Don't touch
 
 \bookmarksetup{numbered}
 
+%% --------------------------- Section, Division, Part Numbering and Format
+\counterwithout{subsection}{section}
+\renewcommand*{\thepart}{\arabic{part}}
+
+\titleformat{\section}[hang]{\normalfont\Large\bfseries}{Division \thesection\ - }{0em}{#1}
+\titleformat{\part}[hang]{\normalfont\Large\bfseries}{Part \thepart\ - }{0em}{#1}
+
+
+%% Correct 'Division' labelling in TOC
+\renewcommand{\cftsecpresnum}{Division }
+\renewcommand{\cftsecaftersnum}{ --- }
+\newlength{\mylen} % a "scratch" length
+\settowidth{\mylen}{\bfseries\cftsecpresnum\cftsecaftersnum} % extra space
+\addtolength{\cftsecnumwidth}{\mylen} % add the extra space
+
+% \renewcommand{\cftpartpresnum}{Part }
+% \renewcommand{\cftpartaftersnum}{ --- }
+% % \newlength{\mylen} % a "scratch" length
+% \settowidth{\mylen}{\bfseries\cftpartpresnum\cftpartaftersnum} % extra space
+% \addtolength{\cftpartnumwidth}{\mylen} % add the extra space
+
 \makeatletter
-\@removefromreset{subsection}{section}
-\renewcommand\thesubsection{\arabic{subsection}}
+\def\@part[#1]#2{%
+    \ifnum \c@secnumdepth >-2\relax
+      \refstepcounter{part}%
+      \addcontentsline{toc}{part}{\partname~\thepart\hspace{1em}#1}%
+    \else
+      \addcontentsline{toc}{part}{#1}%
+    \fi
+    \markboth{}{}%
+    {\centering
+     \interlinepenalty \@M
+     \normalfont
+     \ifnum \c@secnumdepth >-2\relax
+       \huge\bfseries \partname\nobreakspace\thepart
+       \par
+       \vskip 20\p@
+     \fi
+     \Huge \bfseries #2\par}%
+    \@endpart}
 \makeatother
 
+% \titleformat{\section}[hang]{\sffamily\color{IndianRed3}\bfseries\scshape\filleft\lsstyle}{}{2em}{#1\quad\rule[-0.25cm]{1.5pt}{1cm}\rlap{\qquad\Huge \thesection}}%
+% \titleformat{\section}[hang]{\sffamily\color{IndianRed3}\bfseries\scshape\filleft\lsstyle}{}{2em}{#1\quad\rule[-0.25cm]{1.5pt}{1cm}\rlap{\qquad\Large \thesection}}%
 
+
+% --------------------- Numbered Items
+\setlist[enumerate,1]{label = \thesubsection.\arabic*., 
+                        ref = \thesubsection.\arabic*}
+\setlist[enumerate,2]{label = \theenumi.\alph*.,
+                        ref = \theenumi.\alph*}
+\setlist[enumerate,3]{label = \theenumi.\roman*.,     
+                        ref = \theenumii.\roman*}
+
+\setlist[itemize,1]{label=-}
+
+
+% --------------------- Document Stuff
 \title{Constitution of Perth Artifactory Inc}
 \author{}
 
