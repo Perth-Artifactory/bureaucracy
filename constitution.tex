@@ -1,5 +1,6 @@
 \documentclass[11pt]{article}
 % \usepackage{paper_style}
+\usepackage[margin=0.75in]{geometry}
 % \usepackage{changes}
 \usepackage{bookmark}
 \usepackage{subfiles}
@@ -112,9 +113,6 @@
 % \end{abstract}
 % }
 
-% \section{Test Part}
-
-% \section{Test Division}
 
 \tableofcontents
 
@@ -122,5 +120,28 @@
 
 % \input{sections/definitions.tex}
 \subfile{converted.tex}
+
+%% -------------------- TESTS
+
+% \part{Test}
+
+% \section{Test Division}
+
+% \subsection{Test}
+
+% \begin{enumerate}
+%   \item \label{test:lorem} lorem 
+%   \item \label{test:ipsum} ipsum
+%   \begin{enumerate}
+%     \item \label{test:ipsum:lorem} lorem
+%     \begin{enumerate}
+%       \item \label{test:ipsum:lorem:ipsum} ipsum
+%     \end{enumerate}
+%   \end{enumerate}
+% \end{enumerate}
+
+
+% For items \ref{test:ipsum:lorem} and \ref{test:ipsum:lorem:ipsum}
+
 
 \end{document}
