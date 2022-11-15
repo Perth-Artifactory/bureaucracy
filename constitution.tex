@@ -74,12 +74,19 @@
 
 
 % --------------------- Numbered Items
+\setlist{leftmargin=*}
 \setlist[enumerate,1]{label = \thesubsection.\arabic*., 
-                        ref = \thesubsection.\arabic*}
+                        ref = \thesubsection.\arabic*,
+                        leftmargin = 28pt}
 \setlist[enumerate,2]{label = \theenumi.\alph*.,
-                        ref = \theenumi.\alph*}
-\setlist[enumerate,3]{label = \theenumi.\roman*.,     
-                        ref = \theenumii.\roman*}
+                        ref = \theenumi.\alph*,
+                        leftmargin = 28pt}
+\setlist[enumerate,3]{label = \theenumii.\roman*.,     
+                        ref = \theenumii.\roman*,
+                        leftmargin = 32pt}
+\setlist[enumerate,4]{label = \theenumiii.(\arabic*).,     
+                        ref = \theenumiii.(\arabic*),
+                        leftmargin = 40pt}
 
 \setlist[itemize,1]{label=-}
 
@@ -136,12 +143,15 @@
 %     \item \label{test:ipsum:lorem} lorem
 %     \begin{enumerate}
 %       \item \label{test:ipsum:lorem:ipsum} ipsum
+%       \begin{enumerate}
+%         \item \label{test:i:l:i:l} lorem
+%       \end{enumerate}
 %     \end{enumerate}
 %   \end{enumerate}
 % \end{enumerate}
 
 
-% For items \ref{test:ipsum:lorem} and \ref{test:ipsum:lorem:ipsum}
+% For items \ref{test:ipsum:lorem} and \ref{test:ipsum:lorem:ipsum}, and also \ref{test:i:l:i:l}
 
 
 \end{document}
