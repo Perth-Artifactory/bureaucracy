@@ -5,7 +5,8 @@
 \usepackage{bookmark}
 \usepackage{subfiles}
 \usepackage[explicit]{titlesec}
-\usepackage{tocloft}
+\usepackage[]{titletoc}
+\usepackage[titles]{tocloft}
 \usepackage[x11names]{xcolor}
 \usepackage{enumitem}
 \usepackage{palatino}
@@ -16,11 +17,6 @@
 \usepackage[textsize=small]{todonotes}
 \usepackage{changes}
 
-% \usepackage{remreset}
-
-% \setcounter{section}{3}
-
-% \setlength{\droptitle}{-5em} %% Don't touch
 
 \bookmarksetup{numbered}
 
@@ -31,6 +27,17 @@
 \titleformat{\section}[hang]{\normalfont\Large\bfseries}{Division \thesection\ - }{0em}{#1}
 \titleformat{\part}[hang]{\normalfont\Large\bfseries}{Part \thepart\ - }{0em}{#1}
 
+\titlecontents{part}
+  [0pt]
+  {\addvspace{1pc}}%
+  {PART \bfseries \large}
+  {\bfseries \large PART \contentsmargin{0pt}}
+  {}
+  [\addvspace{.5pc}]
+
+
+% \titlecontents{part}[0em]{\large\sffamily\protect\addvspace{15pt}}%
+% {\global\booltrue{numbered}\contentslabel[{\partname\enspace\thecontentslabel}]{0em}\brlap[1.25\baselineskip]}{\global\boolfalse{numbered}}%
 
 %% Correct 'Division' labelling in TOC
 \renewcommand{\cftsecpresnum}{Division }
@@ -45,26 +52,26 @@
 % \settowidth{\mylen}{\bfseries\cftpartpresnum\cftpartaftersnum} % extra space
 % \addtolength{\cftpartnumwidth}{\mylen} % add the extra space
 
-\makeatletter
-\def\@part[#1]#2{%
-    \ifnum \c@secnumdepth >-2\relax
-      \refstepcounter{part}%
-      \addcontentsline{toc}{part}{\partname~\thepart\hspace{1em}#1}%
-    \else
-      \addcontentsline{toc}{part}{#1}%
-    \fi
-    \markboth{}{}%
-    {\centering
-     \interlinepenalty \@M
-     \normalfont
-     \ifnum \c@secnumdepth >-2\relax
-       \huge\bfseries \partname\nobreakspace\thepart
-       \par
-       \vskip 20\p@
-     \fi
-     \Huge \bfseries #2\par}%
-    \@endpart}
-\makeatother
+% \makeatletter
+% \def\@part[#1]#2{%
+%     \ifnum \c@secnumdepth >-2\relax
+%       \refstepcounter{part}%
+%       \addcontentsline{toc}{part}{\partname~\thepart\hspace{1em}#1}%
+%     \else
+%       \addcontentsline{toc}{part}{#1}%
+%     \fi
+%     % \markboth{}{}%
+%     {\centering
+%      \interlinepenalty \@M
+%      \normalfont
+%      \ifnum \c@secnumdepth >-2\relax
+%        \huge\bfseries \partname\nobreakspace\thepart
+%        \par
+%        \vskip 20\p@
+%      \fi
+%      \Huge \bfseries #2\par}%
+%     \@endpart}
+% \makeatother
 
 % \titleformat{\section}[hang]{\sffamily\color{IndianRed3}\bfseries\scshape\filleft\lsstyle}{}{2em}{#1\quad\rule[-0.25cm]{1.5pt}{1cm}\rlap{\qquad\Huge \thesection}}%
 % \titleformat{\section}[hang]{\sffamily\color{IndianRed3}\bfseries\scshape\filleft\lsstyle}{}{2em}{#1\quad\rule[-0.25cm]{1.5pt}{1cm}\rlap{\qquad\Large \thesection}}%
