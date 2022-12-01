@@ -1,28 +1,15 @@
 \documentclass[11pt]{article}
 % \usepackage{paper_style}
+\usepackage[margin=0.75in]{geometry}
 % \usepackage{changes}
 \usepackage{bookmark}
 \usepackage{subfiles}
 \usepackage[explicit]{titlesec}
-\usepackage{tocloft}
+\usepackage[]{titletoc}
+\usepackage[titles]{tocloft}
 \usepackage[x11names]{xcolor}
 \usepackage{enumitem}
 
-% \usepackage{remreset}
-
-%% include the below package if Latex kernal is from before 2018s
-% \usepackage{chngcntr}
-
-%% ===============================================
-%% Setting the line spacing (3 options: only pick one)
-% \doublespacing
-% \singlespacing
-% \onehalfspacing
-%% ===============================================
-
-% \setcounter{section}{3}
-
-% \setlength{\droptitle}{-5em} %% Don't touch
 
 \bookmarksetup{numbered}
 
@@ -33,6 +20,17 @@
 \titleformat{\section}[hang]{\normalfont\Large\bfseries}{Division \thesection\ - }{0em}{#1}
 \titleformat{\part}[hang]{\normalfont\Large\bfseries}{Part \thepart\ - }{0em}{#1}
 
+\titlecontents{part}
+  [0pt]
+  {\addvspace{1pc}}%
+  {PART \bfseries \large}
+  {\bfseries \large PART \contentsmargin{0pt}}
+  {}
+  [\addvspace{.5pc}]
+
+
+% \titlecontents{part}[0em]{\large\sffamily\protect\addvspace{15pt}}%
+% {\global\booltrue{numbered}\contentslabel[{\partname\enspace\thecontentslabel}]{0em}\brlap[1.25\baselineskip]}{\global\boolfalse{numbered}}%
 
 %% Correct 'Division' labelling in TOC
 \renewcommand{\cftsecpresnum}{Division }
@@ -47,41 +45,47 @@
 % \settowidth{\mylen}{\bfseries\cftpartpresnum\cftpartaftersnum} % extra space
 % \addtolength{\cftpartnumwidth}{\mylen} % add the extra space
 
-\makeatletter
-\def\@part[#1]#2{%
-    \ifnum \c@secnumdepth >-2\relax
-      \refstepcounter{part}%
-      \addcontentsline{toc}{part}{\partname~\thepart\hspace{1em}#1}%
-    \else
-      \addcontentsline{toc}{part}{#1}%
-    \fi
-    \markboth{}{}%
-    {\centering
-     \interlinepenalty \@M
-     \normalfont
-     \ifnum \c@secnumdepth >-2\relax
-       \huge\bfseries \partname\nobreakspace\thepart
-       \par
-       \vskip 20\p@
-     \fi
-     \Huge \bfseries #2\par}%
-    \@endpart}
-\makeatother
+% \makeatletter
+% \def\@part[#1]#2{%
+%     \ifnum \c@secnumdepth >-2\relax
+%       \refstepcounter{part}%
+%       \addcontentsline{toc}{part}{\partname~\thepart\hspace{1em}#1}%
+%     \else
+%       \addcontentsline{toc}{part}{#1}%
+%     \fi
+%     % \markboth{}{}%
+%     {\centering
+%      \interlinepenalty \@M
+%      \normalfont
+%      \ifnum \c@secnumdepth >-2\relax
+%        \huge\bfseries \partname\nobreakspace\thepart
+%        \par
+%        \vskip 20\p@
+%      \fi
+%      \Huge \bfseries #2\par}%
+%     \@endpart}
+% \makeatother
 
 % \titleformat{\section}[hang]{\sffamily\color{IndianRed3}\bfseries\scshape\filleft\lsstyle}{}{2em}{#1\quad\rule[-0.25cm]{1.5pt}{1cm}\rlap{\qquad\Huge \thesection}}%
 % \titleformat{\section}[hang]{\sffamily\color{IndianRed3}\bfseries\scshape\filleft\lsstyle}{}{2em}{#1\quad\rule[-0.25cm]{1.5pt}{1cm}\rlap{\qquad\Large \thesection}}%
 
 
 % --------------------- Numbered Items
+\setlist{leftmargin=*}
 \setlist[enumerate,1]{label = \thesubsection.\arabic*., 
-                        ref = \thesubsection.\arabic*}
+                        ref = \thesubsection.\arabic*,
+                        leftmargin = 28pt}
 \setlist[enumerate,2]{label = \theenumi.\alph*.,
-                        ref = \theenumi.\alph*}
-\setlist[enumerate,3]{label = \theenumi.\roman*.,     
-                        ref = \theenumii.\roman*}
+                        ref = \theenumi.\alph*,
+                        leftmargin = 28pt}
+\setlist[enumerate,3]{label = \theenumii.\roman*.,     
+                        ref = \theenumii.\roman*,
+                        leftmargin = 32pt}
+\setlist[enumerate,4]{label = \theenumiii.(\arabic*).,     
+                        ref = \theenumiii.(\arabic*),
+                        leftmargin = 40pt}
 
 \setlist[itemize,1]{label=-}
-
 
 % --------------------- Document Stuff
 \title{Constitution of Perth Artifactory Inc}
@@ -90,31 +94,9 @@
 % DATE:
 \date{\today}
 
-
 \begin{document}
 
-% {\setstretch{.8}
 \maketitle
-% %%%%%%%%%%%%%%%%%%
-% \begin{abstract}
-% % CONTENT OF ABS HERE--------------------------------------
-% 
-% This is a test document.
-% 
-% % END CONTENT ABS------------------------------------------
-% \noindent
-% \textit{\textbf{Keywords: }%
-% key1; key2; key3; key4.} \\ %% <-- Keywords HERE!
-% \noindent
-% \textit{\textbf{JEL Classification: }%
-% Q12; C22; D81.} %% <-- JEL code HERE!
-% 
-% \end{abstract}
-% }
-
-% \section{Test Part}
-
-% \section{Test Division}
 
 \tableofcontents
 
@@ -122,5 +104,30 @@
 
 % \input{sections/definitions.tex}
 \subfile{converted.tex}
+
+%% -------------------- TESTS
+
+% \part{Test}
+
+% \section{Test Division}
+
+% \subsection{Test}
+% 
+% \begin{enumerate}
+%   \item \label{test:lorem} lorem 
+%   \item \label{test:ipsum} ipsum
+%   \begin{enumerate}
+%     \item \label{test:ipsum:lorem} lorem
+%     \begin{enumerate}
+%       \item \label{test:ipsum:lorem:ipsum} ipsum
+%       \begin{enumerate}
+%         \item \label{test:i:l:i:l} lorem
+%       \end{enumerate}
+%     \end{enumerate}
+%   \end{enumerate}
+% \end{enumerate}
+
+
+% For items \ref{test:ipsum:lorem} and \ref{test:ipsum:lorem:ipsum}, and also \ref{test:i:l:i:l}
 
 \end{document}
