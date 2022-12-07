@@ -23,6 +23,7 @@
 
 %% --------------------------- Section, Division, Part Numbering and Format
 \counterwithout{subsection}{section}
+\counterwithin*{section}{part}
 \renewcommand*{\thepart}{\arabic{part}}
 
 \titleformat{\section}[hang]{\normalfont\Large\bfseries}{Division \thesection\ - }{0em}{#1}
