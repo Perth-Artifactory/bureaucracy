@@ -9,6 +9,7 @@
 \usepackage[most]{tcolorbox}
 \usepackage[]{lipsum}
 \usepackage{palatino}
+\usepackage{nameref}
 
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
 
@@ -16,9 +17,12 @@
 
 \setlength{\marginparwidth}{4cm}
 \usepackage[textsize=small]{todonotes}
-\usepackage[commandnameprefix=always, commentmarkup=uwave, final]{changes}
-\definechangesauthor{proofing}
+\usepackage[commandnameprefix=always, commentmarkup=uwave, draft]{changes}
+\definechangesauthor[color=green!50!black]{proofing}
 \definechangesauthor[color=orange]{RC} %Renae
+\definechangesauthor{CAP1-Exclude-Voluntary-Invoices}
+\definechangesauthor{CAP2-Permissive-Written-Notice-For-Committee}
+\definechangesauthor{CAP3-Community-Shed}
 
 
 
@@ -154,15 +158,22 @@
 \tableofcontents
 
 \pagebreak
-
 \subfile{sections/part_0.tex}
+\pagebreak
 \subfile{sections/part_1.tex}
+\pagebreak
 \subfile{sections/part_2.tex}
+\pagebreak
 \subfile{sections/part_3.tex}
+\pagebreak
 \subfile{sections/part_4.tex}
+\pagebreak
 \subfile{sections/part_5.tex}
+\pagebreak
 \subfile{sections/part_6.tex}
+\pagebreak
 \subfile{sections/part_7.tex}
+\pagebreak
 \subfile{sections/part_8.tex}
 
 \listofchanges[style=list, show=added|deleted|replaced]
