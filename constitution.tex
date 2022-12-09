@@ -5,22 +5,25 @@
 \usepackage[explicit]{titlesec}
 \usepackage[]{titletoc}
 \usepackage[titles]{tocloft}
-%\usepackage[x11names]{xcolor}
 \usepackage{enumitem}
 \usepackage[most]{tcolorbox}
 \usepackage[]{lipsum}
 \usepackage{palatino}
 
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
 % Packages for change markups and comments.
-% \usepackage[left=2cm,right=5cm,top=2cm,bottom=2cm]{geometry}
+
 \setlength{\marginparwidth}{4cm}
 \usepackage[textsize=small]{todonotes}
-\usepackage[commandnameprefix=always, commentmarkup=uwave]{changes}
+\usepackage[commandnameprefix=always, commentmarkup=uwave, final]{changes}
 \definechangesauthor{proofing}
 \definechangesauthor[color=orange]{RC} %Renae
 
+
+
 % Set paragraphs to have vertical skip and no indent
-% \usepackage[parfill]{parskip}
+\usepackage[parfill]{parskip}
 
 \bookmarksetup{numbered}
 
@@ -40,22 +43,12 @@
   {}
   [\addvspace{.5pc}]
 
-
-% \titlecontents{part}[0em]{\large\sffamily\protect\addvspace{15pt}}%
-% {\global\booltrue{numbered}\contentslabel[{\partname\enspace\thecontentslabel}]{0em}\brlap[1.25\baselineskip]}{\global\boolfalse{numbered}}%
-
 %% Correct 'Division' labelling in TOC
 \renewcommand{\cftsecpresnum}{Division }
 \renewcommand{\cftsecaftersnum}{ --- }
 \newlength{\mylen} % a "scratch" length
 \settowidth{\mylen}{\bfseries\cftsecpresnum\cftsecaftersnum} % extra space
 \addtolength{\cftsecnumwidth}{\mylen} % add the extra space
-
-% \renewcommand{\cftpartpresnum}{Part }
-% \renewcommand{\cftpartaftersnum}{ --- }
-% % \newlength{\mylen} % a "scratch" length
-% \settowidth{\mylen}{\bfseries\cftpartpresnum\cftpartaftersnum} % extra space
-% \addtolength{\cftpartnumwidth}{\mylen} % add the extra space
 
 \makeatletter
 \def\@part[#1]#2{%
@@ -77,10 +70,6 @@
      \Huge \bfseries #2\par}%
     \@endpart}
 \makeatother
-
-% \titleformat{\section}[hang]{\sffamily\color{IndianRed3}\bfseries\scshape\filleft\lsstyle}{}{2em}{#1\quad\rule[-0.25cm]{1.5pt}{1cm}\rlap{\qquad\Huge \thesection}}%
-% \titleformat{\section}[hang]{\sffamily\color{IndianRed3}\bfseries\scshape\filleft\lsstyle}{}{2em}{#1\quad\rule[-0.25cm]{1.5pt}{1cm}\rlap{\qquad\Large \thesection}}%
-
 
 % --------------------- Numbered Items
 \setlist{leftmargin=*}
@@ -119,24 +108,28 @@
 \NewDocumentCommand{\note}{+O{}+m}{%
 \ifshownotes
  \begingroup
- \tcbset{%
-   noteshift/.store in=\mynote@shift,
-   noteshift=1.5cm
- }
- \begin{tcolorbox}[nobeforeafter,
-   enhanced,
-   sharp corners,
-  %  boxrule=0pt,
-  %  frame hidden,
+% \tcbset{%
+%   noteshift/.store in=\mynote@shift,
+%  noteshift=1.5cm
+% }
+ \begin{tcolorbox}[
+  title=Note,
+  % nobeforeafter,
+  enhanced,
+  % sharp corners,
+  % boxrule=0pt,
+  % frame hidden,
   toprule=1pt,
   bottomrule=1pt,
-  leftrule=0pt,
-  rightrule=0pt,
-   colback=white,
-   #1,
-   left skip=\mynote@shift,
-   right skip=\mynote@shift,
-   overlay={\node[right] (mynotenode) at ([xshift=-\mynote@shift]frame.west) {\textbf{Note:}} ;},
+  leftrule=1pt,
+  rightrule=1pt,
+  colback=blue!5!white,
+  colbacktitle=blue,
+  colframe=blue,
+  #1,
+%   left skip=\mynote@shift,
+%   right skip=\mynote@shift,
+%   overlay={\node[right] (mynotenode) at ([xshift=-\mynote@shift]frame.west) {\textbf{Note:}} ;},
    ]
    #2
  \end{tcolorbox}
@@ -162,11 +155,6 @@
 
 \pagebreak
 
-% \input{sections/definitions.tex}
-
-
-
-
 \subfile{sections/part_0.tex}
 \subfile{sections/part_1.tex}
 \subfile{sections/part_2.tex}
@@ -178,32 +166,5 @@
 \subfile{sections/part_8.tex}
 
 \listofchanges[style=list, show=added|deleted|replaced]
-
-%% -------------------- TESTS
-
-% \part{Test}
-
-% \section{Test Division}
-
-% \subsection{Test}
-
-% \begin{enumerate}
-%   \item \label{test:lorem} lorem 
-%   \item \label{test:ipsum} ipsum
-%   \begin{enumerate}
-%     \item \label{test:ipsum:lorem} lorem
-%     \begin{enumerate}
-%       \item \label{test:ipsum:lorem:ipsum} ipsum
-%       \begin{enumerate}
-%         \item \label{test:i:l:i:l} lorem
-%       \end{enumerate}
-%     \end{enumerate}
-%   \end{enumerate}
-% \end{enumerate}
-
-
-% For items \ref{test:ipsum:lorem} and \ref{test:ipsum:lorem:ipsum}, and also \ref{test:i:l:i:l}
-
-% \note{\lipsum[1]}
 
 \end{document}
