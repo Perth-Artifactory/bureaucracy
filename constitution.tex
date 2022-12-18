@@ -9,7 +9,9 @@
 \usepackage[most]{tcolorbox}
 \usepackage[]{lipsum}
 \usepackage{palatino}
-\usepackage{nameref}
+
+% Development only
+\usepackage[inline]{showlabels}
 
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
 
@@ -23,6 +25,10 @@
 \definechangesauthor{CAP1-Exclude-Voluntary-Invoices}
 \definechangesauthor{CAP2-Permissive-Written-Notice-For-Committee}
 \definechangesauthor{CAP3-Community-Shed}
+\definechangesauthor{CAP4-Corporate-Members}
+\definechangesauthor{CAP5-Meeting-At-More-Than-One-Place}
+\definechangesauthor{CAP6-Delete-Further-Delay-Clauses}
+\definechangesauthor{CAP7-Membership-Fees}
 
 
 
@@ -142,7 +148,10 @@
  }
 \makeatother
 
-
+\makeatletter
+% Parskip in minipages (e.g. tcolorboxes.)
+\newcommand{\@minipagerestore}{\setlength{\parskip}{\medskipamount}}
+\makeatother
 
 % --------------------- Document Stuff
 \title{Constitution of Perth Artifactory Inc}
@@ -157,6 +166,9 @@
 
 \tableofcontents
 
+
+\pagebreak
+\subfile{sections/preface.tex}
 \pagebreak
 \subfile{sections/part_0.tex}
 \pagebreak
@@ -175,6 +187,8 @@
 \subfile{sections/part_7.tex}
 \pagebreak
 \subfile{sections/part_8.tex}
+\pagebreak
+\subfile{sections/revision_history.tex}
 
 \listofchanges[style=list, show=added|deleted|replaced]
 
