@@ -9,11 +9,12 @@
 \usepackage[most]{tcolorbox}
 \usepackage[]{lipsum}
 \usepackage{palatino}
+\usepackage{xltabular}
+\usepackage{csquotes}
 
-% Development only
-\usepackage[inline]{showlabels}
+\usepackage[a4paper,left=2cm,right=2cm,top=3cm,bottom=2cm]{geometry}
 
-\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage[inline]{showlabels} % Development only
 
 % Packages for change markups and comments.
 
@@ -29,6 +30,7 @@
 \definechangesauthor{CAP5-Meeting-At-More-Than-One-Place}
 \definechangesauthor{CAP6-Delete-Further-Delay-Clauses}
 \definechangesauthor{CAP7-Membership-Fees}
+\definechangesauthor{CAP8-Common-Seal}
 
 
 
@@ -153,8 +155,14 @@
 \newcommand{\@minipagerestore}{\setlength{\parskip}{\medskipamount}}
 \makeatother
 
+% Headers and footers
+\usepackage{fancyhdr}
+\fancyhead{}
+\fancyhead[C]{Constitution of Perth Artifactory Inc - DRAFT}
+
 % --------------------- Document Stuff
-\title{Constitution of Perth Artifactory Inc}
+\pagestyle{fancy}
+\title{Constitution of Perth Artifactory Inc - DRAFT}
 \author{}
 
 % DATE:
@@ -166,7 +174,8 @@
 
 \tableofcontents
 
-
+\pagebreak
+\subfile{sections/revision_history.tex}
 \pagebreak
 \subfile{sections/preface.tex}
 \pagebreak
@@ -188,8 +197,10 @@
 \pagebreak
 \subfile{sections/part_8.tex}
 \pagebreak
-\subfile{sections/revision_history.tex}
+\subfile{sections/own_rules_matters.tex}
 
+
+\pagebreak
 \listofchanges[style=list, show=added|deleted|replaced]
 
 \end{document}
