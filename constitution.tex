@@ -14,29 +14,6 @@
 
 \usepackage[a4paper,left=2cm,right=2cm,top=3cm,bottom=2cm]{geometry}
 
-% \usepackage[inline]{showlabels} % Development only
-
-% Packages for change markups and comments.
-
-\setlength{\marginparwidth}{4cm}
-\usepackage[textsize=small]{todonotes}
-\usepackage[commandnameprefix=always, commentmarkup=uwave, draft]{changes}
-\definechangesauthor[color=green!50!black]{proofing}
-\definechangesauthor[color=orange]{RC} %Renae
-\definechangesauthor[color=red]{FIXME}
-\definechangesauthor{CAP1-Exclude-Voluntary-Invoices}
-\definechangesauthor{CAP2-Permissive-Written-Notice-For-Committee}
-\definechangesauthor{CAP3-Community-Shed}
-\definechangesauthor{CAP4-Corporate-Members}
-\definechangesauthor{CAP5-Meeting-At-More-Than-One-Place}
-\definechangesauthor{CAP6-Delete-Further-Delay-Clauses}
-\definechangesauthor{CAP7-Membership-Fees}
-\definechangesauthor{CAP8-Common-Seal}
-\definechangesauthor{CAP9-Emergency-Disciplinary-Action}
-\definechangesauthor{CAP10-Committee-Election}
-\definechangesauthor{CAP11-Payments-To-Committee-Members}
-\definechangesauthor{CAP12-Multiple-Bank-Accounts}
-
 % Set paragraphs to have vertical skip and no indent
 \usepackage[parfill]{parskip}
 
@@ -162,11 +139,13 @@
 % Headers and footers
 \usepackage{fancyhdr}
 \fancyhead{}
-\fancyhead[C]{Constitution of Perth Artifactory Inc - DRAFT}
+\fancyhead[C]{Constitution of Perth Artifactory Inc}
+
+\setlength{\headheight}{15pt}
 
 % --------------------- Document Stuff
 \pagestyle{fancy}
-\title{Constitution of Perth Artifactory Inc - DRAFT}
+\title{Constitution of Perth Artifactory Inc}
 \author{}
 
 % DATE:
@@ -180,8 +159,8 @@
 
 \pagebreak
 \subfile{sections/revision_history.tex}
-\pagebreak
-\subfile{sections/preface.tex}
+% \pagebreak
+% \subfile{sections/preface.tex}
 \pagebreak
 \subfile{sections/part_0.tex}
 \pagebreak
@@ -202,9 +181,5 @@
 \subfile{sections/part_8.tex}
 \pagebreak
 \subfile{sections/own_rules_matters.tex}
-
-
-\pagebreak
-\listofchanges[style=list, show=comment|added|deleted|replaced]
 
 \end{document}
