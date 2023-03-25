@@ -2,7 +2,7 @@
 
 \usepackage{bookmark}
 \usepackage{subfiles}
-\usepackage[explicit]{titlesec}
+\usepackage[explicit, newparttoc]{titlesec}
 \usepackage[]{titletoc}
 \usepackage[titles]{tocloft}
 \usepackage{enumitem}
@@ -35,10 +35,30 @@
 \titlecontents{part}
   [0pt]
   {\addvspace{1pc}}%
-  {PART \bfseries \large}
+  {\normalfont\large\bfseries PART \thecontentslabel\ - }
   {\bfseries \large PART \contentsmargin{0pt}}
   {}
   [\addvspace{.5pc}]
+
+
+% new section for non numbered parts
+\newcounter{nonnumberedparts}
+\titleclass{\nonnumberedparts}{straight}[\part]
+\titleformat{\nonnumberedparts}[hang]{\normalfont\Large\bfseries}{}{0em}{#1}
+\titlespacing*{\nonnumberedparts}{0pt}{3.5ex plus 1ex minus .2ex}{2.3 ex plus .2ex}
+\renewcommand{\thenonnumberedparts}{\arabic{nonnumberedparts}}
+% \counterwithin{section}{mysectionnonnumberedparts}
+
+% define appearance for new section in toc
+\titlecontents{nonnumberedparts}
+  [0pt]
+  {\addvspace{1pc}}%
+  {\normalfont\large\bfseries}
+  {\bfseries \large \contentsmargin{0pt}}
+  {}
+  [\addvspace{.5pc}]
+
+%make formatting 
 
 %% Correct 'Division' labelling in TOC
 \renewcommand{\cftsecpresnum}{Division }
@@ -47,26 +67,26 @@
 \settowidth{\mylen}{\bfseries\cftsecpresnum\cftsecaftersnum} % extra space
 \addtolength{\cftsecnumwidth}{\mylen} % add the extra space
 
-\makeatletter
-\def\@part[#1]#2{%
-    \ifnum \c@secnumdepth >-2\relax
-      \refstepcounter{part}%
-      \addcontentsline{toc}{part}{\partname~\thepart\hspace{1em}#1}%
-    \else
-      \addcontentsline{toc}{part}{#1}%
-    \fi
-    \markboth{}{}%
-    {\centering
-     \interlinepenalty \@M
-     \normalfont
-     \ifnum \c@secnumdepth >-2\relax
-       \huge\bfseries \partname\nobreakspace\thepart
-       \par
-       \vskip 20\p@
-     \fi
-     \Huge \bfseries #2\par}%
-    \@endpart}
-\makeatother
+% \makeatletter
+% \def\@part[#1]#2{%
+%     \ifnum \c@secnumdepth >-2\relax
+%       \refstepcounter{part}%
+%       \addcontentsline{toc}{part}{\partname~\thepart\hspace{1em}#1}%
+%     \else
+%       \addcontentsline{toc}{part}{#1}%
+%     \fi
+%     \markboth{}{}%
+%     {\centering
+%      \interlinepenalty \@M
+%      \normalfont
+%      \ifnum \c@secnumdepth >-2\relax
+%        \huge\bfseries \partname\nobreakspace\thepart
+%        \par
+%        \vskip 20\p@
+%      \fi
+%      \Huge \bfseries #2\par}%
+%     \@endpart}
+% \makeatother
 
 % --------------------- Numbered Items
 \setlist{leftmargin=*}
@@ -211,10 +231,10 @@
 
 \pagebreak
 \pagenumbering{arabic}
-
 \subfile{sections/revision_history.tex}
 % \pagebreak
 % \subfile{sections/preface.tex}
+
 \pagebreak
 \subfile{sections/part_0.tex}
 \pagebreak
