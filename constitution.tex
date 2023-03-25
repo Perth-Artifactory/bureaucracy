@@ -97,16 +97,8 @@
 
 % --------------------- Notes Block
 
-\makeatletter
-\NewDocumentCommand{\note}{+O{}+m}{%
-\ifshownotes
- \begingroup
-% \tcbset{%
-%   noteshift/.store in=\mynote@shift,
-%  noteshift=1.5cm
-% }
- \begin{tcolorbox}[
-  title=Note,
+\newtcolorbox{noteblock}[1][]{
+  title=#1,
   % nobeforeafter,
   enhanced,
   % sharp corners,
@@ -118,14 +110,21 @@
   rightrule=1pt,
   colback=blue!5!white,
   colbacktitle=blue,
-  colframe=blue,
-  #1,
-%   left skip=\mynote@shift,
-%   right skip=\mynote@shift,
-%   overlay={\node[right] (mynotenode) at ([xshift=-\mynote@shift]frame.west) {\textbf{Note:}} ;},
-   ]
+  colframe=blue
+}
+
+
+\makeatletter
+\NewDocumentCommand\note{+O{Note}+m}{%
+\ifshownotes
+ \begingroup
+% \tcbset{%
+%   noteshift/.store in=\mynote@shift,
+%  noteshift=1.5cm
+% }
+  \begin{noteblock}[#1]
    #2
- \end{tcolorbox}
+ \end{noteblock}
  \endgroup
  \fi
  }
