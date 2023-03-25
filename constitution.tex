@@ -11,13 +11,17 @@
 \usepackage{palatino}
 \usepackage{xltabular}
 \usepackage{csquotes}
+\usepackage{tikz}
 
 \usepackage[a4paper,left=2cm,right=2cm,top=3cm,bottom=2cm]{geometry}
 
 % Set paragraphs to have vertical skip and no indent
 \usepackage[parfill]{parskip}
 
+\usetikzlibrary{calc}
+
 \bookmarksetup{numbered}
+\graphicspath{{resources/}}
 
 %% --------------------------- Section, Division, Part Numbering and Format
 \counterwithout{subsection}{section}
@@ -138,25 +142,76 @@
 % Headers and footers
 \usepackage{fancyhdr}
 \fancyhead{}
-\fancyhead[C]{Constitution of Perth Artifactory Inc}
+\fancyhead[R]{Constitution of Perth Artifactory Inc}
+\fancyhead[L]{%
+\begin{tikzpicture}[overlay, remember picture]%
+    \node[anchor=west, minimum size=1in, inner xsep=5mm] at ($(current page.north west)+(1.3cm,-1.65cm)$) {\includegraphics[height=1.25cm]{Artifactory_logo_MARK_ORANGE.png}};
+\end{tikzpicture}
+}
 
 \setlength{\headheight}{15pt}
 
 % --------------------- Document Stuff
 \pagestyle{fancy}
-\title{Constitution of Perth Artifactory Inc}
-\author{}
-
-% DATE:
-\date{\today}
-
 \begin{document}
+\pagenumbering{gobble}
 
-\maketitle
+\begin{titlepage}
+  
+% % DATE:
+% \date{\today}
+
+	\centering % Centre everything on the title page
+	
+	%------------------------------------------------
+	%	Top rules
+	%------------------------------------------------
+	
+	\rule{\textwidth}{1pt} % Thick horizontal rule
+	
+	% \vspace{2pt}\vspace{-\baselineskip} % Whitespace between rules
+	\vspace{2pt}\vspace{-10mm} % Whitespace between rules
+	
+	\rule{\textwidth}{0.4pt} % Thin horizontal rule
+	
+	\vspace{0.1\textheight} % Whitespace between the top rules and title
+	
+	%------------------------------------------------
+	%	Title
+	%------------------------------------------------
+	
+		{\Huge CONSTITUTION }\\[0.5\baselineskip] % Title line 1
+		{\Large OF}\\[0.5\baselineskip] % Title line 2
+		{\Huge PERTH ARTIFACTORY INC} % Title line 3
+	
+	\vspace{0.025\textheight} % Whitespace between the title and short horizontal rule
+	
+	\rule{0.4\textwidth}{0.4pt} % Short horizontal rule under the title
+	
+	\vspace{0.05\textheight} 
+  \today
+	\vspace{0.2\textheight}
+
+  % Logo 
+  % \includegraphics[width=0.6\textwidth]{Artifactory_logo_COMBO-HORIZ_ORANGE.png}
+  \includegraphics[width=0.4\textwidth]{Artifactory_logo_COMBO-ROUND_ORANGE.png}
+ 
+	% \vspace{0.1\textheight}
+  \vfill
+	
+	\rule{\textwidth}{0.4pt} % Thin horizontal rule
+	\vspace{2pt}\vspace{-10mm} % Whitespace between rules
+	\rule{\textwidth}{1pt} % Thick horizontal rule
+
+\end{titlepage}
+
+\pagenumbering{roman}
 
 \tableofcontents
 
 \pagebreak
+\pagenumbering{arabic}
+
 \subfile{sections/revision_history.tex}
 % \pagebreak
 % \subfile{sections/preface.tex}
